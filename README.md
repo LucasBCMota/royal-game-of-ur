@@ -1,2 +1,3 @@
 # royal-game-of-ur
-Ancient game played in mesopotamia.
+Implementation of an ancient game played in mesopotamia.
+Created around 2600–2400 BC
