@@ -38,7 +38,21 @@ class Board:
 		print(player1_print_buffer)
 		print(player2_print_buffer)
 
+	def roll_dice(self):
+		prob = random.random()
+		if prob <= 0.0625:
+			return 0
+		elif prob <= 0.3125:
+			return 1
+		elif prob <= 0.6875:
+			return 2
+		elif prob <= 0.9375:
+			return 3
+		else:
+			return 4
+
 
 if __name__ == '__main__':
     g = Board(params)
     g.print_board()
+    print(g.roll_dice())
