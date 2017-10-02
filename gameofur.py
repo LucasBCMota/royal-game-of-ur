@@ -82,9 +82,35 @@ class Board:
 		attacker.pieces[attacker_píece] = position
 		return 1
 
+	def valid_moves(self,player,dice_roll):
+		'''
+		List of valid moves given a player and a dice roll 
+		returns a list of tuples in the form (piece, target position)
+
+		'''
+		valid_moves = []
+		if dice_roll != 0:
+			for piece in range(params['number_of_pieces']):
+				target = player.pieces[piece] + dice_roll
+				if target in self.player1.pieces:
+					if player.number == 1:
+						continue
+					elif target in params['rosettas']:
+						continue
+				if target in self.player2.pieces:
+					if player.number == 2:
+						continue
+					elif target in params['rosettas']:
+						continue
+				valid_moves.append((piece,target))
+		return valid_moves
+
 if __name__ == '__main__':
     g = Board(params)
     g.print_board()
-    g.move(g.player1,1,8)
+    g.move(g.player2,0,8)
+    g.move(g.player1,1,6)
+    A = g.valid_moves(g.player1,g.roll_dice())
+    print(A)
     g.print_board()
     print(g.roll_dice())
